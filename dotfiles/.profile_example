@@ -1,6 +1,10 @@
 # this file is for things not specifically related to bash like environment variables and PATH
 # this file works with most shells and persists on restart
 
+# usage: create file in ~/ home dir or touch .profile
+# this should already be created by default in most distros i.e. ubuntu etc.
+# after writing changes to ram in text editor, make sure to source file with source ~/.profile to make changes in shell
+
 # autorun tmux
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
       exec tmux
