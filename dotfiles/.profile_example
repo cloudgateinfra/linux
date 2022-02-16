@@ -1,0 +1,62 @@
+# this file is for things not specifically related to bash like environment variables and PATH
+# this file works with most shells and persists on restart
+
+# autorun tmux
+if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+      exec tmux
+  fi
+
+# disable log4j lookups
+export LOG4J_FORMAT_MSG_NO_LOOKUPS=true
+
+# full update
+alias update="sudo apt-get update && sudo apt-get upgrade -y && sudo apt dist-upgrade -y && sudo apt autoremove -y"
+
+# paths
+PATH=$PATH:/usr/local/bin/
+
+# ffmpeg
+alias allaudioextractmp4='for vid in *.mp4; do ffmpeg -i "$vid" -q:a 0 "${vid%.mp4}.mp3"; done'
+alias extract="ffmpeg -i"
+alias vbr="-q:a 0"
+
+# terraform
+alias tf-auth=". terra-auth.sh"
+
+# shortcuts
+alias home="cd ~"
+alias music="cd /mnt/c/music"
+alias downloads="cd /mnt/c/Users/example/Downloads"
+alias scripts="cd /usr/local/bin"
+alias terra="cd ~/terraform"
+
+# general
+alias sauce="source ~/.profile"
+alias sauce2="source ~/.bashrc"
+alias motd="sudo run-parts /etc/update-motd.d/"
+alias weather="curl http://wttr.in/"
+alias past="history | grep"
+
+# file-management
+alias ll='ls -lah'
+alias up="cd .."
+alias recent="ls -lt | head"
+alias permit="chmod 700 -R ./"
+alias copy="sudo rsync -aPh"
+alias aliases="sudo vim ~/.profile"
+alias aliases2="sudo vim ~/.bashrc"
+alias remove="sudo apt-get remove"
+alias file-sizes="du -sh * | sort -h"
+
+# tmux
+alias split="tmux split"
+
+# network
+alias open-ports="sudo lsof -i -P -n | grep LISTEN"
+alias public-ip="dig +short myip.opendns.com @resolver1.opendns.com"
+
+# virtualization
+alias docker-cleanup="docker system prune -a"
+
+# ssh
+alias gg="ssh user@ip"
